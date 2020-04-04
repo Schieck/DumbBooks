@@ -7,6 +7,84 @@
 	<link rel="stylesheet" href="dependencies/css/bulma.min.css">
 	<script defer src="dependencies/js/fontawesome-all.js"></script>
 	<script src="dependencies/js/lodash.js"></script>
+	<script src="dependencies/js/dumbBooks.js"></script>
 </head>
-<body/>
+<body>
+	<!-- Nav-->
+	<nav class="navbar is-transparent" role="navigation" aria-label="dropdown navigation">
+		<div class="navbar-brand">
+			<div class="navbar-burger burger" data-target="navbarMenu">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+		<div class="navbar-menu" id="navbarMenu">
+			<div class="navbar-end">
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-link is-arrowless">
+						Import
+					</a>
+					<div class="navbar-dropdown is-right">
+						<div class="navbar-item">
+							<div class="file">
+								<label class="file-label">
+									<input class="file-input" type='file' multiple="multiple" accept='text/plain'
+										onchange='openTxt(event)' />
+									<span class="file-cta">
+										<span class="file-icon">
+											<i class="fas fa-upload"></i>
+										</span>
+										<span class="file-label">
+											book.txt (Name by line)
+										</span>
+									</span>
+								</label>
+							</div>							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<!-- Nav-->
+
+	<!-- Top 3-->
+	<section class="section">
+		<div class="container">
+			<h1 class="title">Top 3</h1>
+			<div id="topBooks"></div>
+		</div>
+	</section>
+	<!-- Top 3-->
+
+	<!-- Good Books-->
+	<section class="section">
+		<div class="container">
+			<h2 class="title">Good Books</h2>
+			<div id="goodBooks"></div>
+		</div>
+	</section>
+	<!-- Good Books-->
+
+	<!-- More Books and Footer-->
+	<section class="section">
+		<div class="content has-text-centered">
+			<button class="button is-rounded" onclick="loadNextPage()">+</button>
+		</div>
+	</section>
+	<section class="section">
+		<footer class="footer">
+			<div class="content has-text-centered">
+				<p>
+					<strong>DumbBooks</strong> by <a href="http://schieck.app">Schieck</a>. The source code is
+					licensed
+					<a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+					is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+				</p>
+			</div>
+		</footer>
+	</section>
+	<!-- More Books and Footer-->
+</body>
 </html
