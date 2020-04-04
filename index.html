@@ -49,6 +49,34 @@
 	</nav>
 	<!-- Nav-->
 
+	<!-- Editor-->
+	<div class="modal" id="editorModal">
+		<div class="modal-background"></div>
+		<div class="modal-card">
+			<header class="modal-card-head">
+				<p class="modal-card-title">Edit Book!</p>
+				<button class="delete" onclick="toggleEditorModal()" aria-label="close"></button>
+			</header>
+			<section class="modal-card-body">
+				<div class="field">
+					<div class="control">
+					  <input id="editorTitle" style="text-transform: capitalize;" class="input is-large" type="text" placeholder="Title">
+					</div>
+				  </div>
+				  <div class="field">
+					<div class="control">
+					  <input id="editorAuthor" style="text-transform: capitalize;" class="input" type="text" placeholder="Author">
+					</div>
+				  </div>
+			</section>
+			<footer class="modal-card-foot">
+				<button class="button is-success" onclick="saveBook()">Save changes</button>
+				<button class="button" onclick="toggleEditorModal()">Cancel</button>
+			</footer>
+		</div>
+	</div>
+	<!-- Editor-->
+
 	<!-- Top 3-->
 	<section class="section">
 		<div class="container">

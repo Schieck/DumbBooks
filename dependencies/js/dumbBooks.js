@@ -92,7 +92,7 @@ var updateRank = function () {
 		      Ocurrences: ${ocurrences}
 		    </p>
 		    <p class="card-footer-item">
-			  <a>Edit</a>
+			  <a onClick="editBook('${title}')" >Edit</a>
 		    </p>
 		  </footer>
 		</div>`
@@ -125,10 +125,31 @@ var loadNextPage = function () {
 		      Ocurrences: ${ocurrences}
 		    </p>
 		    <p class="card-footer-item">
-			  <a>Edit</a>
+			  <a onClick="editBook('${title}')">Edit</a>
 		    </p>
 		  </footer>
 		</div>`
 		document.getElementById("goodBooks").innerHTML += card;
 	}
+}
+
+//Editor`s functions
+var toggleEditorModal = function () {
+	document.getElementById("editorModal").classList.toggle("is-active");
+}
+
+var editBook = function (bookname) {
+	selectedBook = bookname;
+
+	document.getElementById("editorTitle").value = bookname;
+	document.getElementById("editorAuthor").value = authors[selectedBook] != undefined ? authors[selectedBook] : "";
+
+	toggleEditorModal();
+}
+
+var saveBook = function(){
+	books.map(function(item) { return item.toLowerCase() == selectedBook ?  document.getElementById("editorTitle").value : item.toLowerCase();});
+	authors[selectedBook] = document.getElementById("editorAuthor").value;
+	updateRank();
+	toggleEditorModal();
 }
