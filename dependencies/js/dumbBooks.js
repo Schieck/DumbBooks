@@ -50,13 +50,51 @@ var openTxt = function (event) {
 			});
 
 			updateRank();
-
 		};
 
 		//Read book list
 		reader.readAsText(file);
 	});
 };
+
+var importState = function (event) {
+	var input = event.target;
+
+	//Create a new reader
+	var reader = new FileReader();
+
+	//When read the list, save the books in the books list
+	reader.onload = function () {
+		var result = JSON.parse(reader.result);
+			
+		books = JSON.parse(result.books);
+		rank = JSON.parse(result.rank);
+		authors = JSON.parse(result.authors);
+
+		updateRank();
+	};
+
+	//Read book list
+	reader.readAsText(input.files[0]);
+};
+
+//Exporters
+var exportState = function(){
+	var data = {"books": JSON.stringify(books), "authors": JSON.stringify(authors), "rank": JSON.stringify(rank)};
+	exportToJsonFile(data);
+}
+	
+var exportToJsonFile = function(jsonData) {
+    let dataStr = JSON.stringify(jsonData);
+    let dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+
+    let exportFileDefaultName = 'books-save.json';
+
+    let linkElement = document.createElement('a');
+    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('download', exportFileDefaultName);
+    linkElement.click();
+}
 
 //Books Updaters
 var updateRank = function () {
