@@ -7,6 +7,46 @@
 	<link rel="stylesheet" href="dependencies/css/bulma.min.css">
 	<script defer src="dependencies/js/fontawesome-all.js"></script>
 	<script src="dependencies/js/lodash.js"></script>
+	<script src="dependencies/js/dumbBooks.js"></script>
 </head>
-<body/>
+<body>
+	<!-- Nav-->
+	<nav class="navbar is-transparent" role="navigation" aria-label="dropdown navigation">
+		<div class="navbar-brand">
+			<div class="navbar-burger burger" data-target="navbarMenu">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+		<div class="navbar-menu" id="navbarMenu">
+			<div class="navbar-end">
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-link is-arrowless">
+						Import
+					</a>
+					<div class="navbar-dropdown is-right">
+						<div class="navbar-item">
+							<div class="file">
+								<label class="file-label">
+									<input class="file-input" type='file' multiple="multiple" accept='text/plain'
+										onchange='openTxt(event)' />
+									<span class="file-cta">
+										<span class="file-icon">
+											<i class="fas fa-upload"></i>
+										</span>
+										<span class="file-label">
+											book.txt (Name by line)
+										</span>
+									</span>
+								</label>
+							</div>							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<!-- Nav-->
+</body>
 </html
