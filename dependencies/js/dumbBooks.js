@@ -50,6 +50,7 @@ var openTxt = function (event) {
 			});
 
 			updateRank();
+
 		};
 
 		//Read book list
