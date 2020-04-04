@@ -49,10 +49,86 @@ var openTxt = function (event) {
 
 			});
 
-			//updateRank();
+			updateRank();
+
 		};
 
 		//Read book list
 		reader.readAsText(file);
 	});
 };
+
+//Books Updaters
+var updateRank = function () {
+	//Create Rank of most ocurrences of the books
+	var booksGroup = _.groupBy(books, book => book);
+
+	//Order by most ocurrences
+	rank = _.orderBy(booksGroup, [countArray => countArray.length, x => x[0]], 'desc');
+
+	//Clean Sections
+	document.getElementById("topBooks").innerHTML = "";
+	document.getElementById("goodBooks").innerHTML = "";
+
+	for (var i = 0; i < 3 && rank.length > 0; i++) {
+		var book = rank.shift();
+
+		var title = book[0];
+		var author = authors[book[0]] != undefined ? authors[book[0]] : "";
+		var ocurrences = book.length;
+				
+		var card = `
+		<div class="card" style="margin-bottom: 10px">
+		  <div class="card-content">
+		    <p class="title" style="text-transform: capitalize;">
+		      ${title}
+		    </p>
+		    <p class="subtitle" style="text-transform: capitalize;">
+			   ${author}
+		    </p>
+		  </div>
+		  <footer class="card-footer">
+		    <p class="card-footer-item">
+		      Ocurrences: ${ocurrences}
+		    </p>
+		    <p class="card-footer-item">
+			  <a>Edit</a>
+		    </p>
+		  </footer>
+		</div>`
+		document.getElementById("topBooks").innerHTML += card;
+	}
+
+	loadNextPage();
+}
+
+var loadNextPage = function () {
+	for (var i = 0; i < 5 && rank.length > 0; i++) {
+		var book = rank.shift();
+		
+		var title = book[0];
+		var author = authors[book[0]] != undefined ? authors[book[0]] : "";
+		var ocurrences = book.length;
+
+		var card = `
+		<div class="card" style="margin-bottom: 10px">
+		  <div class="card-content">
+		    <p class="title" style="text-transform: capitalize;">
+		      ${title}
+		    </p>
+		    <p class="subtitle" style="text-transform: capitalize;">
+			   ${author}
+		    </p>
+		  </div>
+		  <footer class="card-footer">
+		    <p class="card-footer-item">
+		      Ocurrences: ${ocurrences}
+		    </p>
+		    <p class="card-footer-item">
+			  <a>Edit</a>
+		    </p>
+		  </footer>
+		</div>`
+		document.getElementById("goodBooks").innerHTML += card;
+	}
+}
