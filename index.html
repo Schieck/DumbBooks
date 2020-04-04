@@ -10,16 +10,7 @@
 	<script src="dependencies/js/dumbBooks.js"></script>
 </head>
 <body>
-	<!-- Nav-->
-	<nav class="navbar is-transparent" role="navigation" aria-label="dropdown navigation">
-		<div class="navbar-brand">
-			<div class="navbar-burger burger" data-target="navbarMenu">
-				<span></span>
-				<span></span>
-				<span></span>
-			</div>
-		</div>
-		<div class="navbar-menu" id="navbarMenu">
+			<div class="navbar-menu" id="navbarMenu">
 			<div class="navbar-end">
 				<div class="navbar-item has-dropdown is-hoverable">
 					<a class="navbar-link is-arrowless">
@@ -42,7 +33,26 @@
 								</label>
 							</div>							
 						</div>
+						<div class="navbar-item">
+							<div class="file">
+								<label class="file-label">
+									<input class="file-input" type='file' accept='json'
+										onchange='importState(event)' />
+									<span class="file-cta">
+										<span class="file-icon">
+											<i class="fas fa-upload"></i>
+										</span>
+										<span class="file-label">
+											books-save.json (Save)
+										</span>
+									</span>
+								</label>
+							</div>
+						</div>
 					</div>
+				</div>
+				<div class="navbar-item">
+					<button class="button is-small" onClick="exportState()">JSON</button>					
 				</div>
 			</div>
 		</div>
